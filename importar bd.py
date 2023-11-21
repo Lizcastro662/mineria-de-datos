@@ -1,6 +1,6 @@
 import pandas as pd
 
-file_path = "C:\\Users\\lizca\\Downloads\\base\\roger-federer-data.csv"
+file_path = "C:\\Users\\lizca\\Downloads\\mineria de datos\\base\\roger-federer-data.csv"
 
 # Leer el archivo CSV
 df = pd.read_csv(file_path)
