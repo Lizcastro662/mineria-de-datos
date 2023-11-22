@@ -1,0 +1,38 @@
+import pandas as pd
+import plotly.graph_objects as go
+import os
+
+file_path = "C:/Users/lizca/Downloads/mineria de datos/base/datoslimpios.csv"
+df = pd.read_csv(file_path)
+
+relevant_columns = [
+    'player_ranking', 'tourney_year', 'tourney_name', 'tourney_location'
+]
+
+df_LIMP = df[relevant_columns]
+
+df_LIMP_15 = df_LIMP.head(15)
+
+fig = go.Figure()
+
+fig.add_trace(go.Box(y=df_LIMP_15['tourney_location'], name='tourney_location'))
+
+fig.add_trace(go.Box(y=df_LIMP_15['tourney_name'], name='tourney_name'))
+
+fig.update_layout(
+    title={
+        'text': "Box Plots - User Ratings",
+        'y': 0.9,
+        'x': 0.5,
+        'xanchor': 'center',
+        'yanchor': 'top'
+    }
+)
+
+directory = "C:/Users/lizca/Downloads/mineria de datos/img"
+
+if not os.path.exists(directory):
+    os.makedirs(directory)
+
+img_path = os.path.join(directory, 'boxplots_plotly.png')
+fig.write_image(img_path)
